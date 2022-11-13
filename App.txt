@@ -1,0 +1,405 @@
+&lt;
+!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" &gt;
+&lt;
+html xmlns="http://www.w3.org/1999/xhtml" &gt;
+&lt;
+head&gt;
+&lt;
+meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;
+title&gt;
+Login Page&lt;/title&gt;
+&lt;
+style&gt;
+
+/* Basics */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    color: #444;
+    -webkit-font-smoothing: antialiased;
+    background: #f0f0f0;
+}
+
+#container {
+    position: fixed;
+    width: 340px;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -170px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+
+form {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+label {
+    color: #555;
+    display: inline-block;
+    margin-left: 18px;
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+p a {
+    font-size: 11px;
+    color: #aaa;
+    float: right;
+    margin-top: -13px;
+    margin-right: 20px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+p a:hover {
+    color: #555;
+}
+
+input {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    outline: none;
+}
+
+input[type=text],
+input[type=password],
+input[type=time] {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 290px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+input[type=time]:hover {
+    border: 1px solid #b6bfc0;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=time]:focus {
+    border: 1px solid #a8c9e4;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+}
+
+#lower {
+    background: #ecf2f5;
+    width: 100%;
+    height: 69px;
+    margin-top: 20px;
+    box-shadow: inset 0 1px 1px #fff;
+    border-top: 1px solid #ccc;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+input[type=checkbox] {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.check {
+    margin-left: 3px;
+    font-size: 11px;
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+}
+
+input[type=submit] {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #acd6ef;
+    /*IE fallback*/
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+    background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+    background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+    border-radius: 30px;
+    border: 1px solid #66add6;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#b6e2ff), to(#6ec2e8));
+    background-image: -moz-linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+    background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #6ec2e8 100%);
+}
+
+input[type=submit]:active {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#6ec2e8), to(#b6e2ff));
+    background-image: -moz-linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
+    background-image: linear-gradient(top left 90deg, #6ec2e8 0%, #b6e2ff 100%);
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;
+body&gt;
+&lt;
+!-- Begin Page Content --&gt;
+&lt;
+div id="container" &gt;
+&lt;
+form action="login_process.php" method="post" &gt;
+&lt;
+label for="loginmsg" style="color:hsla(0,100%,50%,0.5); font-family:" Helvetica Neue",Helvetica,sans-serif;" &gt;
+&lt;
+?php echo @$_GET['msg'];
+?&gt;
+&lt;/label&gt;
+&lt;
+label for="username" &gt;
+Username:&lt;/label&gt;
+&lt;
+input type="text" id="username" name="username" &gt;
+&lt;
+label for="password" &gt;
+Password:&lt;/label&gt;
+&lt;
+input type="password" id="password" name="password" &gt;
+&lt;
+div id="lower" &gt;
+&lt;
+input type="checkbox" &gt;
+&lt;
+label class="check" for="checkbox" &gt;
+Keep me logged in&lt;/label&gt;
+&lt;
+input type="submit" value="Login" &gt;
+&lt;/div&gt;
+&lt;
+!--/ lower--&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;
+!--/ container--&gt;
+&lt;
+!-- End Page Content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+form {
+    height: 200px;
+    width: 400px;
+    margin-right: 50px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+div.row {
+    display: flex;
+    width: 100%;
+}
+
+div.row input {
+    margin-left: 5px;
+}
+
+div.row input:first-child {
+    margin-left: 0;
+}
+
+input[type=text],
+input[type=email] {
+    background: #E8E8E8;
+    font-size: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    padding: 6px 12px;
+}
+
+textarea {
+    resize: none;
+    font-size: 10px;
+    background: #E8E8E8;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    padding: 6px 12px;
+    margin-bottom: 5px;
+}
+
+input[type=submit] {
+    background: #1ba4dd;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+    width: 100%;
+    padding: 8px 0;
+}
+
+input[type=submit]:hover {
+    background: #00bfff;
+}
+
+<div class="six columns"><form><fieldset><div class="row"><input name="name" type="text" required placeholder="NAME"><input name="email" type="email" required placeholder="EMAIL"></div><input name="subject" type="text" placeholder="SUBJECT"><textarea rows="8" placeholder="MESSAGE..."></textarea></fieldset><input type="submit" value="SUBMIT"></form></div>const ingredients=()=> {
+    const container=document.querySelector(".show-ingredients");
+    const addBtn=document.querySelector(".add-ingredient");
+    const newIngredient=document.querySelector("#input-ingredients");
+    let ingredients=[];
+    newIngredient.required=true;
+
+    addBtn.addEventListener("click", async ()=> {
+            newIngredient.required=false;
+            ingredients.push(` <div class="ingredient-container" > <input class='ingredient' type="text" value='${newIngredient.value}' required > <div class="controls delete" > <a class="delete-ingredient" > <span class="ingredient-bar" ></span> </a> </div> </div>`);
+            container.innerHTML=ingredients.join("");
+            newIngredient.value="";
+            deleteIngredient(ingredients, container);
+        });
+
+    if (ingredients.length==0) {
+        newIngredient.required=true;
+    }
+}
+
+;
+
+const deleteIngredient=(list, wrapper)=> {
+    let ingredients=list;
+    let container=wrapper;
+    var deleteBtn=document.querySelectorAll('.delete-ingredient');
+
+    for (let i=0; i < ingredients.length; i++) {
+        deleteBtn[i].addEventListener('click', async ()=> {
+                console.log(i);
+                ingredients.splice(i, 1);
+                container.innerHTML=ingredients.join('');
+
+                deleteIngredient(ingredients, container);
+            });
+    }
+}
+
+ingredients();
+
+.form-container {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.form-container input {
+    width: 400px;
+    max-width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+/* Add/delete ingredient */
+
+.ingredient-wrapper {
+    width: 400px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    width: 400px;
+    max-width: 100%;
+    border: 1px solid grey;
+    margin-bottom: 5px;
+}
+
+.controls,
+.controls.delete {
+    background-color: green;
+    height: 100%;
+    width: 28px;
+    padding-left: 1px;
+}
+
+.controls.delete {
+    background-color: red;
+}
+
+.ingredient {
+    margin-bottom: 0px;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.add-ingredient,
+.delete-ingredient {
+    width: 28px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.ingredient-bar::before {
+    content: "";
+    background-color: white;
+    display: block;
+    height: 2px;
+    width: 13px;
+    transform: rotate(90deg);
+}
+
+.ingredient-bar {
+    background-color: white;
+    height: 2px;
+    width: 13px;
+}
+
+.delete-ingredient {
+    background-color: red;
+}
+
+.delete-ingredient .ingredient-bar::before {
+    display: none;
+}
+
+<form action="" class="form-container" id="wrapper"><input type="text" placeholder="What's cookin?" id="input-title" style="margin-top: 20px;" required><div class="ingredient-wrapper"><div class="ingredient-container"><input type="text" placeholder="Ingredients" id="input-ingredients" style="border: none; margin-bottom: 0px; width: 400px;max-width:100%; height: 100%;"><div class="controls"><a class="add-ingredient"><span class="ingredient-bar"></span></a></div></div><div class="show-ingredients"></div></div><input type="text" placeholder="Description/Instructions" id="input-description" required><button type="submit" class="add-btn">Add post</button></form>
